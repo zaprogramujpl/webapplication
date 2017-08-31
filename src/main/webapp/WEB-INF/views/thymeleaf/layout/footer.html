@@ -8,7 +8,8 @@
 </head>
 <body>
 	<div th:fragment="footer">
-		<div class="navbar navbar-default navbar-fixed-bottom">				
+		<div class="navbar navbar-default navbar-fixed-bottom">
+			<p class="navbar-text pull-left" th:text="'System Version: ' + ${systemVersion}"></p>				
 		</div>
 	</div>
 </body>
