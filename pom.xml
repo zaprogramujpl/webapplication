@@ -90,7 +90,35 @@
 		<spring.version>4.3.6.RELEASE</spring.version>
 		<spring.web.version>4.3.7.RELEASE</spring.web.version>
 		<thymeleaf.version>3.0.5.RELEASE</thymeleaf.version>
-		<thymeleafspringsecurity4.version>3.0.2.RELEASE</thymeleafspringsecurity4.version>	
+		<thymeleafspringsecurity4.version>3.0.2.RELEASE</thymeleafspringsecurity4.version>
 		<thymeleaf.layout.dialect>2.0.5</thymeleaf.layout.dialect>
 	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.github.jsimone</groupId>
+									<artifactId>webapp-runner</artifactId>
+									<version>8.5.11.3</version>
+									<destFileName>webapp-runner.jar</destFileName>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
