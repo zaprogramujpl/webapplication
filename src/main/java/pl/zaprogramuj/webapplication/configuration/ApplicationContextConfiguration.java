@@ -10,6 +10,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
@@ -52,7 +53,7 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter imp
 		templateEngine.setTemplateResolver(templateResolver());
 		templateEngine.setEnableSpringELCompiler(true);
 		templateEngine.addDialect(new LayoutDialect());
-		//templateEngine.addDialect(springSecurityDialect());
+		templateEngine.addDialect(springSecurityDialect());
 		return templateEngine;
 	}
 
@@ -63,6 +64,12 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter imp
 		viewResolver.setCharacterEncoding("UTF-8");
 		viewResolver.setCache(false);
 		return viewResolver;
+	}
+	
+	@Bean
+	public SpringSecurityDialect springSecurityDialect()
+	{
+		return new SpringSecurityDialect();
 	}
 
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

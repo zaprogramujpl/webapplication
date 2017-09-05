@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>pl.zaprogramuj.webapplication</groupId>
 	<artifactId>WebApplication</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<dependencies>
@@ -83,7 +83,22 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
+		</dependency>		
+		<!-- Spring Security Taglibs [BEGIN] -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.version}</version>
 		</dependency>
+		<!-- Spring Security Taglibs [END] -->		
+		<!-- For SpringSecurityInitializer [BEGIN] -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- For SpringSecurityInitializer [END]-->		
 	</dependencies>
 	<properties>
 		<spring.security.version>4.0.4.RELEASE</spring.security.version>
