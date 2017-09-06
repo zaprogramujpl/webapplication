@@ -4,12 +4,16 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
 	layout:decorate="~{layout/layout}">
-  <head>
-  		<title>Webapplication by zaprogramuj.pl</title>
-  </head>
+<head>
+<title>Login Page - Webapplication by zaprogramuj.pl</title>
+</head>
 <body>
 	<div layout:fragment="content">
-		<p>Git Version - Spring Security - Login + HTML Componet</p>
+		<div class="container">
+			<div class="col-md-6">
+				<div th:replace="component/login/loginFormComponent :: loginFormComponent"></div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
