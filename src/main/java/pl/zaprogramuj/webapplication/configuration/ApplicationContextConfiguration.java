@@ -31,7 +31,7 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter imp
     }
 
 	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+	public PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
 	}
 
