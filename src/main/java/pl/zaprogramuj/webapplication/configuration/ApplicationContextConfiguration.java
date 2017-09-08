@@ -1,6 +1,7 @@
 package pl.zaprogramuj.webapplication.configuration;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +21,7 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 @Configuration
 @EnableWebMvc
-@PropertySource("classpath:system.properties")
+@PropertySource(value = {"classpath:system.properties", "classpath:application.properties"})
 public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
 	private ApplicationContext applicationContext;
@@ -33,6 +34,14 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter imp
 	@Bean
 	public PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
+	}
+	
+	@Bean
+	public PropertyPlaceholderConfigurer propertyPlaceholderConfigurer(){
+		PropertyPlaceholderConfigurer property = new PropertyPlaceholderConfigurer();
+		property.setSystemPropertiesMode(PropertyPlaceholderConfigurer.SYSTEM_PROPERTIES_MODE_OVERRIDE);
+		property.setSearchSystemEnvironment(Boolean.TRUE);
+		return property;
 	}
 
 	@Bean
