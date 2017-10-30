@@ -24,6 +24,7 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
 						<ul class="dropdown-menu" sec:authorize="isAnonymous()">
 							<li><a href="#" th:href="@{/}">Main page</a></li>
+							<li><a href="#" th:href="@{/register}">Create Account</a></li>
 							<li><a href="#" th:href="@{/login}">Login page</a></li>
 						</ul>
 						<ul class="dropdown-menu" sec:authorize="isAuthenticated()">
