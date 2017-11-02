@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.zaprogramuj.webapplication.dao.user.UserServiceDao;
 import pl.zaprogramuj.webapplication.exception.user.UserExistsException;
+import pl.zaprogramuj.webapplication.exception.user.UserNotFoundException;
 import pl.zaprogramuj.webapplication.model.user.UserProfile;
 import pl.zaprogramuj.webapplication.service.user.UserService;
 
@@ -20,10 +21,16 @@ public class UserServiceImpl implements UserService
 	private UserServiceDao userServiceDao;
 
 	@Override
-	public UserProfile findUserById(long id_user)
-	{
-		// TODO Auto-generated method stub
-		return null;
+	public UserProfile findUserById(long id_user) throws UserNotFoundException
+	{	
+		UserProfile user = userServiceDao.findUserById(id_user);
+		
+		if(user == null)
+		{
+			throw new UserNotFoundException(id_user);
+		}		
+		
+		return userServiceDao.findUserById(id_user);
 	}
 
 	@Override

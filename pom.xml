@@ -3,17 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>pl.zaprogramuj.webapplication</groupId>
 	<artifactId>WebApplication</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 
 	<packaging>war</packaging>
 
 	<dependencies>
 		<!-- WebJar [BEGIN] -->
- 		<dependency>
+		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
 			<version>3.3.5</version>
-		</dependency> 
+		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
@@ -127,6 +127,23 @@
 			<version>1.2.2</version>
 		</dependency>
 		<!-- HIBERNATE && ORM && POSTGRES [END] -->
+		<!-- TESTS [BEGIN] -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.7.19</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- TESTS [END] -->
 	</dependencies>
 	<properties>
 		<spring.security.version>4.2.3.RELEASE</spring.security.version>

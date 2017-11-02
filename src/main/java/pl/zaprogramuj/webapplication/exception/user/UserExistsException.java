@@ -1,8 +1,6 @@
 package pl.zaprogramuj.webapplication.exception.user;
 
-import pl.zaprogramuj.webapplication.exception.WebApplicationException;
-
-public class UserExistsException extends WebApplicationException{
+public class UserExistsException extends UserException{
 
 	private static final long serialVersionUID = 1L;
 		

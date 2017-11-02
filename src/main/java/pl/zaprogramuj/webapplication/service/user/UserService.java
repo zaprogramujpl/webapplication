@@ -1,6 +1,7 @@
 package pl.zaprogramuj.webapplication.service.user;
 
 import pl.zaprogramuj.webapplication.exception.user.UserExistsException;
+import pl.zaprogramuj.webapplication.exception.user.UserNotFoundException;
 import pl.zaprogramuj.webapplication.model.user.UserProfile;
 
 /**
@@ -14,8 +15,9 @@ public interface UserService {
 	 * 
 	 * @param id_user
 	 * @return
+	 * @throws UserNotFoundException 
 	 */
-	public abstract UserProfile findUserById(long id_user);
+	public abstract UserProfile findUserById(long id_user) throws UserNotFoundException;
 	
 	/**
 	 * This method try find user by his login. If user doesn't exist, method return null
