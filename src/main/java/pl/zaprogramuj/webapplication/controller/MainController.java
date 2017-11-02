@@ -113,18 +113,6 @@ public class MainController
 		return mnv;
 	}
 	// REGISTER [END]
-
-	// UserProfile [BEGIN]
-	// TODO:Do usuniêcia - nale¿y przenieœæ do nowego kontrolera
-	@RequestMapping(value = "/profile/", method = RequestMethod.GET)
-	public ModelAndView profilePage()
-	{
-		ModelAndView mnv = new ModelAndView();
-		mnv.setViewName("userProfile/userProfile");
-		return mnv;
-	}
-
-	// UserProfile [END]
 	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
 	public ModelAndView accessDenied()
 	{
