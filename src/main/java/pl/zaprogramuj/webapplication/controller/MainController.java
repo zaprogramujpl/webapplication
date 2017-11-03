@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +26,7 @@ import pl.zaprogramuj.webapplication.model.user.UserProfile;
 import pl.zaprogramuj.webapplication.service.system.SystemPropertiesService;
 import pl.zaprogramuj.webapplication.service.user.UserRoleService;
 import pl.zaprogramuj.webapplication.service.user.UserService;
+import pl.zaprogramuj.webapplication.validator.UserFormValidator;
 
 @Controller
 @RequestMapping(value = "/")
@@ -39,6 +42,15 @@ public class MainController
 	@Autowired
 	@Qualifier("userRoleServiceImpl")
 	private UserRoleService userRoleService;
+	
+	@Autowired
+	private UserFormValidator userFormValidator;
+	
+	@InitBinder
+	private void initBinding(WebDataBinder binder)
+	{
+		binder.setValidator(userFormValidator);
+	}
 
 	@ModelAttribute(name = "systemVersion")
 	public String addSystemVersionToModel()
@@ -113,6 +125,7 @@ public class MainController
 		return mnv;
 	}
 	// REGISTER [END]
+	
 	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
 	public ModelAndView accessDenied()
 	{
