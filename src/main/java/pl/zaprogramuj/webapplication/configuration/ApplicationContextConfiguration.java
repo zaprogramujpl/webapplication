@@ -1,5 +1,7 @@
 package pl.zaprogramuj.webapplication.configuration;
 
+import java.util.Locale;
+
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.ApplicationContext;
@@ -9,9 +11,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
@@ -31,6 +37,11 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter imp
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(localChangeInterceptor());
+	}
 
 	@Bean
 	public PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
@@ -90,7 +101,23 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter imp
         source.setUseCodeAsDefaultMessage(true);
         return source;
     }
-
+	
+	//I18N [BEGIN]
+	@Bean
+	public LocaleChangeInterceptor localChangeInterceptor()
+	{
+		LocaleChangeInterceptor localChangeInterceptor = new LocaleChangeInterceptor();
+		localChangeInterceptor.setParamName("lang");
+		return localChangeInterceptor;
+	}
+	
+	@Bean(name = "localeResolver")
+	public LocaleResolver localResolver() {
+		SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+		localeResolver.setDefaultLocale(new Locale("en"));
+		return localeResolver;
+	}
+	//I18N [END]
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;		
 	}
