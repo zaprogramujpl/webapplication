@@ -9,7 +9,7 @@
 <body>
 	<div th:fragment="footer">
 		<div class="navbar navbar-default navbar-fixed-bottom">
-			<p class="navbar-text pull-left" th:text="'System Version: ' + ${systemVersion}"></p>				
+			<p class="navbar-text pull-left" th:inline="text">[[#{footer.systemVersion}]]: <span th:text="${systemVersion}">SYSTEM_VERSION</span></p>				
 		</div>
 	</div>
 </body>
