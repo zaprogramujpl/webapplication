@@ -21,16 +21,16 @@ public class UserServiceImpl implements UserService
 	private UserServiceDao userServiceDao;
 
 	@Override
-	public UserProfile findUserById(long id_user) throws UserNotFoundException
+	public UserProfile findUserById(long idUser) throws UserNotFoundException
 	{	
-		UserProfile user = userServiceDao.findUserById(id_user);
+		UserProfile user = userServiceDao.findUserById(idUser);
 		
 		if(user == null)
 		{
-			throw new UserNotFoundException(id_user);
+			throw new UserNotFoundException(idUser);
 		}		
 		
-		return userServiceDao.findUserById(id_user);
+		return userServiceDao.findUserById(idUser);
 	}
 
 	@Override

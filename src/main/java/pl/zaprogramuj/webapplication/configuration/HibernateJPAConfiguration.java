@@ -53,10 +53,10 @@ public class HibernateJPAConfiguration {
 	}
 	
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException, URISyntaxException {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws URISyntaxException {
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		factoryBean.setDataSource(dataSource());
-		factoryBean.setPackagesToScan(new String[] { "pl.zaprogramuj.webapplication" });
+		factoryBean.setPackagesToScan("pl.zaprogramuj.webapplication");
 		factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
 		factoryBean.setJpaProperties(jpaProperties());
 		return factoryBean;

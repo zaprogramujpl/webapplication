@@ -118,7 +118,7 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter imp
 		return localeResolver;
 	}
 	//I18N [END]
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+	public void setApplicationContext(ApplicationContext applicationContext) {
 		this.applicationContext = applicationContext;		
 	}
 }

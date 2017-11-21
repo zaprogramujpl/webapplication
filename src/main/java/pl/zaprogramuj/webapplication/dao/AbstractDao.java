@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @Transactional
-public abstract class AbstractDao<PrimaryKey extends Serializable, T> {
+public abstract class AbstractDao<PK extends Serializable, T> {
 	
 	private final Class<T> persistentClass;
 	
@@ -26,7 +26,7 @@ public abstract class AbstractDao<PrimaryKey extends Serializable, T> {
 		return this.entityManager;
 	}
 
-	public T getByPrimaryKey(PrimaryKey pk)
+	public T getByPrimaryKey(PK pk)
 	{
 		return (T) entityManager.find(persistentClass, pk);
 	}

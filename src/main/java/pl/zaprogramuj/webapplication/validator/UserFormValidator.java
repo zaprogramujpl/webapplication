@@ -16,11 +16,10 @@ import org.springframework.validation.Validator;
 
 import pl.zaprogramuj.webapplication.model.form.user.UserProfileForm;
 
-@Component
+@Component(value = "userFormValidator")
 @Scope(scopeName = BeanDefinition.SCOPE_SINGLETON)
 public class UserFormValidator implements Validator
 {
-
 	@Autowired
 	private MessageSource messageProperties;
 	
