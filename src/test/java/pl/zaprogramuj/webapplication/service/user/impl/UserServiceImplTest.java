@@ -40,9 +40,8 @@ public class UserServiceImplTest
 	}
 	
 	//Tests for method : addUser [BEGIN]
-	
 	@Test
-	public void addUserTest() throws UserExistsException
+	public void shouldAddUser() throws UserExistsException
 	{
 		UserProfile user = new UserProfile();
 		user.setId(100);
@@ -54,7 +53,7 @@ public class UserServiceImplTest
 	}
 	
 	@Test(expected = UserExistsException.class)
-	public void addExistUserTest() throws UserExistsException
+	public void shouldThrowExceptionWhenUserExist() throws UserExistsException
 	{
 		UserProfile user = new UserProfile();
 		user.setId(100);
@@ -62,14 +61,13 @@ public class UserServiceImplTest
 		
 		when(userDao.findUserByLogin(user.getLogin())).thenReturn(user);
 		
-		userService.addUser(user);
-		
+		userService.addUser(user);		
 	}		
 	//Tests for method : addUser [END]
 	
 	//Tests for method : findUserByLogin [BEGIN]
 	@Test
-	public void findUserByLoginTest()
+	public void shouldFindUserByLogin()
 	{
 		UserProfile user = new UserProfile();
 		user.setId(100);
@@ -80,7 +78,7 @@ public class UserServiceImplTest
 	}
 	
 	@Test
-	public void notExistUserWithLoginTest()
+	public void shouldReturnNullWhenThereIsNoUserWithGivenLogin()
 	{
 		UserProfile user = new UserProfile();
 		user.setLogin("testUser");
@@ -90,10 +88,9 @@ public class UserServiceImplTest
 	}	
 	//Tests for method : findUserByLogin [END]
 	
-	//Tests for method : findUserById [BEGIN]
-	
+	//Tests for method : findUserById [BEGIN]	
 	@Test
-	public void findUserById() throws UserNotFoundException
+	public void shouldFindUserWithGivenId() throws UserNotFoundException
 	{
 		UserProfile user = new UserProfile();
 		user.setId(1);
@@ -104,7 +101,7 @@ public class UserServiceImplTest
 	}
 	
 	@Test(expected = UserNotFoundException.class)
-	public void notExistUserWithId() throws UserNotFoundException
+	public void shouldThrowExceptionWhenThereIsNotUserWithGivenId() throws UserNotFoundException
 	{
 		UserProfile user = new UserProfile();
 		user.setId(1);

@@ -16,6 +16,6 @@ public class SystemPropertiesServiceImpl implements SystemPropertiesService {
 
 	@Override
 	public String getSystemVersion() {
-		return systemVersion.substring(0, systemVersion.indexOf("-"));
+		return systemVersion.substring(0, systemVersion.indexOf('-'));
 	}
 }

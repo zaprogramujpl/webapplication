@@ -16,8 +16,8 @@ import pl.zaprogramuj.webapplication.model.user.UserProfile;
 public class UserServiceDaoImpl extends AbstractDao<Long, UserProfile> implements UserServiceDao {	
 
 	@Override
-	public UserProfile findUserById(long id_user) {
-		return getByPrimaryKey(id_user);
+	public UserProfile findUserById(long idUser) {
+		return getByPrimaryKey(idUser);
 	}
 
 	@Override
