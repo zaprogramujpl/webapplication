@@ -12,19 +12,19 @@ import pl.zaprogramuj.webapplication.service.user.UserService;
 public abstract class AbstractController
 {
 	@Autowired
-	protected SystemPropertiesService systemProperties;
+	private SystemPropertiesService systemProperties;
 
 	@Autowired
 	@Qualifier("userServiceImpl")
-	protected UserService userService;
+	private UserService userService;
 
 	@Autowired
 	@Qualifier("userRoleServiceImpl")
-	protected UserRoleService userRoleService;
+	private UserRoleService userRoleService;
 	
 	@Autowired
 	@Qualifier("userFormValidator")
-	protected Validator userFormValidator;
+	private Validator userFormValidator;
 	
 	/*
 	 * Although this method is private, this object will be added to views in classes inherited from the AbstractController.
@@ -33,5 +33,25 @@ public abstract class AbstractController
 	private String addSystemVersionToModel()
 	{
 		return systemProperties.getSystemVersion();
+	}
+
+	public SystemPropertiesService getSystemProperties()
+	{
+		return systemProperties;
+	}
+
+	public UserService getUserService()
+	{
+		return userService;
+	}
+
+	public UserRoleService getUserRoleService()
+	{
+		return userRoleService;
+	}
+
+	public Validator getUserFormValidator()
+	{
+		return userFormValidator;
 	}
 }
