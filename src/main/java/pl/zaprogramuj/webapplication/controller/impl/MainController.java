@@ -31,7 +31,7 @@ public class MainController extends AbstractController
 	@InitBinder
 	private void initBinding(WebDataBinder binder)
 	{
-		binder.setValidator(userFormValidator);
+		binder.setValidator(getUserFormValidator());
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -100,7 +100,7 @@ public class MainController extends AbstractController
 	private void registerUser(UserProfileForm userProfileForm) throws UserExistsException
 	{
 		UserProfile user = userProfileForm.getUser();
-		user.addRole(userRoleService.findByEnumValue(UserRoleEnum.USER));
-		userService.addUser(user);
+		user.addRole(getUserRoleService().findByEnumValue(UserRoleEnum.USER));
+		getUserService().addUser(user);
 	}
 }
