@@ -8,6 +8,7 @@ public final class SystemViewsName
 	public static final String USER_PROFILE = "pages/userProfile/userProfile";
 	
 	public static final String ERROR_403 = "pages/error/403";
+	public static final String REDIRECT_TO_MAIN_PAGE = "redirect:/";
 	
 	private SystemViewsName()
 	{
