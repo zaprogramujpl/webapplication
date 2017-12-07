@@ -3,8 +3,12 @@ package pl.zaprogramuj.webapplication.model.user;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +17,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import pl.zaprogramuj.webapplication.model.UserRoleEnum;
 
 @Entity
 @Table(name = "USER_PROFILE")
@@ -38,7 +44,12 @@ public class UserProfile {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "USER_ACCOUNT_ROLE", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = {
 			@JoinColumn(name = "USER_PROFILE_ID") })
-	private Set<UserRole> roles = new HashSet<UserRole>();
+	private Set<UserRole> roles = new HashSet<>();
+	
+	public void addRole(UserRole userRole)
+	{		
+		roles.add(userRole);
+	}
 
 	public long getId() {
 		return id;
@@ -89,7 +100,8 @@ public class UserProfile {
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((emailAddress == null) ? 0 : emailAddress.hashCode());
@@ -102,7 +114,8 @@ public class UserProfile {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -110,46 +123,44 @@ public class UserProfile {
 		if (getClass() != obj.getClass())
 			return false;
 		UserProfile other = (UserProfile) obj;
-		if (emailAddress == null) {
+		if (emailAddress == null)
+		{
 			if (other.emailAddress != null)
 				return false;
 		} else if (!emailAddress.equals(other.emailAddress))
 			return false;
-		if (firstName == null) {
+		if (firstName == null)
+		{
 			if (other.firstName != null)
 				return false;
 		} else if (!firstName.equals(other.firstName))
 			return false;
 		if (id != other.id)
 			return false;
-		if (login == null) {
+		if (login == null)
+		{
 			if (other.login != null)
 				return false;
 		} else if (!login.equals(other.login))
 			return false;
-		if (password == null) {
+		if (password == null)
+		{
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (roles == null) {
+		if (roles == null)
+		{
 			if (other.roles != null)
 				return false;
 		} else if (!roles.equals(other.roles))
 			return false;
 		return true;
 	}
-	
-	public void addRole(UserRole userRole)
-	{		
-		roles.add(userRole);
-	}
 
 	@Override
-	public String toString() {
-		return "UserAccount [id=" + id + ", login=" + login + ", firstName=" + firstName + ", password=" + password
-				+ ", emailAddress=" + emailAddress + ", roles=" + roles + "]";
+	public String toString()
+	{
+		return "UserProfile [id=" + id + ", login=" + login + ", firstName=" + firstName + ", password=" + password + ", emailAddress=" + emailAddress + ", roles=" + roles + "]";
 	}
-
-	
 }

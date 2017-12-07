@@ -3,6 +3,8 @@ package pl.zaprogramuj.webapplication.controller.impl;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -28,6 +30,8 @@ import pl.zaprogramuj.webapplication.util.SystemViewsName;
 @RequestMapping(value = "/")
 public class MainController extends AbstractController
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
+	
 	@InitBinder
 	private void initBinding(WebDataBinder binder)
 	{

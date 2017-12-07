@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>pl.zaprogramuj.webapplication</groupId>
 	<artifactId>WebApplication</artifactId>
-	<version>0.0.12-SNAPSHOT</version>
+	<version>0.0.13-SNAPSHOT</version>
 
 	<packaging>war</packaging>
 
@@ -149,6 +149,18 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<!-- TESTS [END] -->
+		<!-- LOGGING [BEGIN] -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.7.20</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.7</version>
+		</dependency>
+		<!-- LOGGING [END] -->
 	</dependencies>
 	<properties>
 		<spring.security.version>4.2.3.RELEASE</spring.security.version>
